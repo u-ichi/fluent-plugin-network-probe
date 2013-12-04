@@ -1,0 +1,75 @@
+h1. Fluent::Plugin::NetworkProbe
+
+Fluentd input plugin to probe network latency and keepalive, similar to Smokeping.
+Now support methods are fping and curl.
+
+
+h2. Installation
+
+h3. Install tools
+
+on Ubuntu12.04
+
+<pre>
+$ sudo apt-get install fping curl
+</pre>
+
+h3. Install fluent plugin
+
+Add this line to your application's Gemfile:
+
+<pre>
+gem 'fluent-plugin-network-probe'
+</pre>
+
+Or install it yourself as:
+
+<pre>
+$ gem install fluent-plugin-network-probe
+</pre>
+
+Or use td-agent : (on Ubuntu12.04)
+
+<pre>
+$ sudo /usr/lib/fluent/ruby/bin/fluent-gem install fluent-plugin-network-probe
+</pre>
+
+
+
+h2. Configuration
+
+<pre>
+<source>
+  type config_expander
+
+  <config>
+    type network_probe
+    probe_type fping
+    target google.com
+    tag network_probe.${hostname}.fping
+    fping_count 5              # optional: default 5(count)
+    fping_timeout 2            # optional: default 2(sec)
+    fping_interval 1           # optional: default 1(sec)
+    fping_exec /usr/bin/fping  # optional: default '/usr/bin/fping'
+  </config>
+</source>
+
+<source>
+  type config_expander
+
+  <config>
+    type network_probe
+    probe_type curl
+    target google.com
+    tag network_probe.${hostname}.curl
+    curl_protocol http        # optional: default http(http or https)
+    curl_port 80              # optional: default 80
+    curl_path /               # optional: default /
+    curl_count 5              # optional: default 5(count)
+    curl_timeout 2            # optional: default 2(sec)
+    curl_interval 1           # optional: default 1(sec)
+    curl_exec /usr/bin/curl   # optional: default '/usr/bin/curl'
+  </config>
+</source>
+</pre>
+

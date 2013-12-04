@@ -1,0 +1,32 @@
+PATH
+  remote: .
+  specs:
+    fluent-plugin-network-probe (0.0.1)
+      eventmachine
+      fluentd (>= 0.10.7)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    cool.io (1.1.1)
+      iobuffer (>= 1.0.0)
+    eventmachine (1.0.3)
+    fluentd (0.10.40)
+      cool.io (~> 1.1.1)
+      http_parser.rb (~> 0.5.1)
+      json (>= 1.4.3)
+      msgpack (>= 0.4.4, < 0.6.0, != 0.5.3, != 0.5.2, != 0.5.1, != 0.5.0)
+      yajl-ruby (~> 1.0)
+    http_parser.rb (0.5.3)
+    iobuffer (1.1.2)
+    json (1.8.1)
+    msgpack (0.5.6)
+    rake (10.1.0)
+    yajl-ruby (1.1.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  fluent-plugin-network-probe!
+  rake

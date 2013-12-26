@@ -89,7 +89,7 @@ module Fluent
 
 
     def exec_curl
-      cmd = "#{@curl_exec} #{@curl_protocol}://#{@target}:#{@curl_port}#{@curl_path} -w \%\{time_total\} -m #{@curl_timeout}"
+      cmd = "#{@curl_exec} #{@curl_protocol}://#{@target}:#{@curl_port}#{@curl_path} -w \\\n\%\{time_total\} -m #{@curl_timeout}"
 
       result_times = []
 
